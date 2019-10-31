@@ -1,0 +1,249 @@
+@charset "utf-8";
+/*  
+ BASE
+----------------------------------------------------------- */
+html{
+  font-size: 10px;
+}
+body{
+  background-color: #F2E6D4;
+  font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
+  font-size: 1.6rem;
+  color: #333;
+}
+* {
+  margin:0; padding:0; 
+  box-sizing: border-box;
+}
+h1,h2,h3,h4,h5,h6 {
+}
+p,li,dt,dl {
+	line-height:1.6;
+}
+p {
+	margin:0 0 1em 0;
+}
+li {
+	list-style-type:none;
+}
+img {
+  border:0;
+  vertical-align: middle;
+}
+
+
+/*
+ Link Color
+----------------------------------------------------------- */
+a:link {
+	color:#333;
+	text-decoration:none;
+}
+a:visited {
+	color:#D82630;
+	text-decoration:none;
+}
+a:hover {
+	text-decoration:none;
+}
+a:active {
+	color:#D82630;
+}
+
+/*
+ input button
+----------------------------------------------------------- */
+input[type="text"] {
+  border: none;
+  outline: none;
+  height: 60px;
+  border-radius: 30px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  width: 100%;
+  padding: 20px 22px;
+  background-color: #fff;
+  font-size: 16px;
+}
+input[type="text"].search-input {
+  background-color: #F2F2F2;
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+input[type="text"].todoitem-input {
+  display: none;
+  padding-left: 55px;
+  padding-right: 35px;
+  transition: 1s;
+}
+input[type="text"].todoitem-input.display {
+  display: block;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.16);
+  transform: translate(0, 2px);
+}
+input[type="text"].todoCreater-input{
+  display: none;
+}
+input[type="text"].todoCreater-input.active{
+  display: block;
+}
+button{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+button.delete-btn{
+  background-color: #89A3D3;
+  padding: 2px 9px;
+  border-radius: 12px;
+}
+button.complete-btn{
+  background-color: #D82630;
+  padding: 2px 11px;
+  border-radius: 16px;
+  position: absolute;
+  right: 0;
+  display: none;
+}
+.site-width{
+  width: 90%;
+  max-width: 500px;
+  margin: 30px auto;
+  min-height: calc( 100vh - 220px);
+}
+
+/*
+ Header
+----------------------------------------------------------- */
+.header{
+  width: 100%;
+  background-color: #D56950;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16);
+}
+.header-title{
+  font-size: 2rem;
+  color: #fff;
+  display: inline-block;
+}
+.header-icon{
+  vertical-align: -4px;
+}
+
+/*
+ 検索
+----------------------------------------------------------- */
+.search-wrapper{
+  margin-bottom: 20px;
+}
+
+/*
+ option button
+----------------------------------------------------------- */
+.option-wrapper{
+  position: relative;
+  margin-bottom: 20px;
+}
+.option-link a{
+  font-size: 14px;
+  color: #707070;
+}
+/*
+ todolist
+----------------------------------------------------------- */
+.todoitem{
+  position: relative;
+  margin-bottom: 20px;
+}
+.todoitem-check{
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  cursor: pointer;
+  z-index: 1;
+}
+.todoitem-trash{
+  position: absolute;
+  right: 18px;
+  top: 22px;
+  color: #A8A8A8;
+  cursor: pointer;
+}
+.todoitem-txt{
+  display: none;
+  height: 60px;
+  border-radius: 30px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  width: 100%;
+  padding: 20px 22px 20px 60px;
+  background-color: #fff;
+}
+.todoitem-txt.display{
+  display: block;
+}
+.todoitem.done .todoitem-txt{
+  box-shadow: none;
+  opacity: 0.5;
+}
+/*
+ todocreater
+----------------------------------------------------------- */
+.todoCreater-wrapper{
+  text-align: center;
+}
+.todoCreater-icon{
+  margin-top: 20px;
+  cursor: pointer;
+}
+/*
+ footer
+----------------------------------------------------------- */
+.footer{
+  width: 100%;
+  background-color: #D56950;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 3px -13px rgba(113, 113, 113, 0.19);
+}
+.footer-menus{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-menu{
+  text-align: center;
+  height: 80px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.footer-menu:hover{
+  opacity: 0.8;
+}
+.footer-menu + .footer-menu{
+  border-left: 1px solid #fff;
+}
+.footer-menu-name{
+  margin-top: 2px;
+  display: block;
+  color: #fff;
+  font-size: 10px;
+}
