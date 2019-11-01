@@ -53,7 +53,4 @@ export default {
 .footer-menu.selected{
   opacity: 0.8;
 }
-.footer-icon-wrapper{
-  
-}
 </style>

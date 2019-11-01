@@ -40,35 +40,33 @@ import TodoCreater from './components/TodoCreater.vue';
 import TodoOption from './components/TodoOption.vue';
 import FooterMenu from './components/FooterMenu.vue';
 
-const STORAGE_KEY = 'todos-vuejs-2.6';
-const todoStorage = {
-  fetch() {
-    const todos = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
-    todos.forEach(function(todo, index){
-      todo.id = index;
-    });
-    
-    todoStorage.uid = todos.length;
+var STORAGE_KEY = 'neko-list'
+var todoStorage = {
+  fetch: function() {
+    var todos = JSON.parse(
+      localStorage.getItem(STORAGE_KEY) || '[]'
+    )
+    todos.forEach(function(todo, index) {
+      todo.id = index
+    })
+    todoStorage.number = todos.length
+    return todos
+  },
+  save: function(todos) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(todos))
+  }
+}
+
+const filters = {
+  all(todos) {
     return todos;
   },
-  save(todos) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+  active(todos) {
+    return todos.filter(todo => !todo.completed);
+  },
+  completed(todos) {
+    return todos.filter(todo => todo.completed);
   }
-};
-const filters = {
-	all(todos) {
-		return todos;
-	},
-	active(todos) {
-		return todos.filter((todo) =>
-			!todo.completed
-		);
-	},
-	completed(todos) {
-		return todos.filter((todo) =>
-			todo.completed
-		);
-	}
 };
 export default {
   name: 'app',
@@ -130,7 +128,7 @@ export default {
       todoStorage.save(this.todos);
 		},
 		removeTodo(todo) {
-      this.todos = this.todos.filter((item) => item !== todo);
+      this.todos = this.todos.filter(item => item !== todo);
       todoStorage.save(this.todos);
 		},
 		done(todo, completed) {
