@@ -1,5 +1,5 @@
 <template>
-  <div class="option-wrapper">
+  <div class="option-wrapper" v-cloak>
     <span class="option-link">
       <a 
         class="option-btn" 
@@ -10,7 +10,6 @@
         >選択解除</a>
     </span>
     <button type="button" class="delete-btn" @click="removeCompleted">削除</button>
-    <button type="button" class="complete-btn">完了</button>
   </div>
 </template>
 
@@ -42,5 +41,3 @@ export default {
 }
 </script>
 
-<style scoped>
-</style>

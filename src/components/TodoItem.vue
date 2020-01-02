@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="todoitem-wrapper">
     <img class="todoitem-check" src="@/assets/img/icon-check.svg" alt="" @click="onInput">
-    <img class="todoitem-check-done" src="@/assets/img/icon-check-done.svg" alt="" @click="onInput">    
+    <img class="todoitem-check-done animated shake" src="@/assets/img/icon-check-done.svg" alt="" @click="onInput">    
     <span 
       @dblclick="edit=!edit"
       :class="{display: !edit}"
@@ -10,7 +10,8 @@
       v-model="todo.title"
       :class="{display: edit}" 
       type="text" class="todoitem-input"
-      @keypress.enter="edit=!edit">
+      @keypress.enter="edit=!edit"
+      @blur="edit=!edit">
     <v-fa @click="removeTodo" class="todoitem-trash" :icon="['far', 'trash-alt']" />
   </div>
 </template>
@@ -19,15 +20,12 @@
 
 export default {
   name: 'TodoItem',
-  components:{
-
-  },
   props:{
     todo: Object,
   },
   data(){
     return{
-      edit: false
+      edit: false,
     }
   },
 	methods: {
@@ -43,6 +41,10 @@ export default {
 </script>
 
 <style>
+.todoitem-wrapper{
+  position: relative;
+  margin-bottom: 20px;
+}
 .todoitem-check-done{
   display: none;
   position: absolute;
@@ -74,4 +76,5 @@ export default {
 .todoitem-input.display{
   display: block;
 }
+
 </style>

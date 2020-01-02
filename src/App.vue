@@ -2,12 +2,12 @@
   <div id="app">
   <header class="header">
     <div class="header-title-wrapper">
-      <img class="header-icon" src="@/assets/img/title-icon.svg" alt="">
+      <!-- <img class="header-icon" src="@/assets/img/title-icon.svg" alt=""> -->
       <h1 class="header-title">ねこりすと</h1>
     </div>
   </header>
   <main class="site-width">
-    <todo-search></todo-search>
+    <todo-search v-model="searchWord"></todo-search>
 
     <todo-option
       :all-done="allDone"
@@ -81,7 +81,8 @@ export default {
     return{
       todos: todoStorage.fetch(),
       number: 0,
-      visibility: 'all'
+      visibility: 'all',
+      searchWord:''
     }
   },
   watch:{
@@ -94,7 +95,18 @@ export default {
   },
 	computed: {
     filteredTodos() {
-			return filters[this.visibility](this.todos);
+      var filterWord = this.searchWord && this.searchWord.toLowerCase();
+      if(!filterWord){
+        console.log(this.searchWord + 'なし');
+        return filters[this.visibility](this.todos);
+      }else{
+        console.log(this.searchWord + 'あり');
+        return this.todos.filter(function (row) {
+            return Object.keys(row).some(function (key) {
+                return String(row[key]).toLowerCase().indexOf(filterWord) > -1
+            })
+        })
+      }
     },
     allDone:{
       get(){
@@ -155,4 +167,5 @@ export default {
 
 <style>
 @import "./assets/css/style.css";
+[v-cloak] { display: none }
 </style>

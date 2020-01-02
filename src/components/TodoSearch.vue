@@ -1,10 +1,10 @@
 <template>
-  <div class="search-wrapper">
+  <div class="search-wrapper" >
     <input 
       type="text" 
-      placeholder="&#xf002; 検索" 
       class="search-input"
       :value="value"
+      placeholder="検索するぞ！"
       @input="searchTodo">
   </div>
 </template>

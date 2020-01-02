@@ -1,6 +1,8 @@
 <template>
-  <div class="todolist-wrapper">
-    <ul class="todolist">
+  <div class="todolist-wrapper" v-cloak>
+    <transition-group 
+      class="todolist" name="todoitem" tag="ul"
+      leave-active-class="animated rollOut">
       <li v-for="todo in filteredTodos"
         class="todoitem"
         :class="{done: todo.completed}"
@@ -10,7 +12,7 @@
           @done="done"
           @remove-todo="removeTodo"></todo-item>
       </li>
-    </ul>
+    </transition-group>
   </div>
 </template>
 
@@ -24,17 +26,19 @@ export default {
 	props: {
 		todos: Array,
 		filteredTodos: Array
-	},
+  },
 	methods: {
 		removeTodo(todo) {
 			this.$emit('remove-todo', todo);
 		},
 		done(todo, completed) {
 			this.$emit('done', todo, completed);
-		}
+    }
 	}
 }
 </script>
 
-<style scoped>
+<style>
+
+
 </style>

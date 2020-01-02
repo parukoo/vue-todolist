@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import VAnimateCss from 'v-animate-css';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -15,7 +16,7 @@ library.add(fas, far, fab);
 Vue.component('v-fa', FontAwesomeIcon);
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
-
+Vue.use(VAnimateCss);
 Vue.config.productionTip = false
 
 new Vue({
